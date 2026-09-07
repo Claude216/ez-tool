@@ -1,0 +1,83 @@
+--- ezr_upstream.py	2026-09-02 14:38:42.201614478 -0400
++++ ezr_fig4.py	2026-09-02 14:39:24.878871804 -0400
+@@ -22,6 +22,7 @@
+     --textmine.no=20     negative samples
+     --textmine.top=100   top TF-IDF features
+     --textmine.valid=20  repeats for stats testing
++    --textmine.klass=label  CSV column holding the relevance label
+ """
+ from __future__ import annotations
+ from time import perf_counter_ns as now
+@@ -697,15 +698,17 @@
+       if any(x.strip() for x in r):
+         yield [thing(x.strip()) for x in r]
+ 
+-def tmPrepare(f: str) -> S:
++def tmPrepare(f: str, klass: str = None) -> S:
+   """Full text-mining pipeline."""
+-  return tmTfidf(tmStem(tmNostop(tmTokenize(f))))
++  return tmTfidf(tmStem(tmNostop(tmTokenize(f, klass=klass))))
+ 
+-def tmTokenize(f: str, txt: str = "abstract", klass: str = "label") -> S:
++def tmTokenize(f: str, txt: str = "abstract", klass: str = None) -> S:
+   """Parse CSV, extract lowercase words of length > 2."""
++  klass = klass or the.textmine.klass
+   p = S(docs=[], tf=[], df={}, tfidf={}, top=[])
+   rows = tmCsv(f); hdr = next(rows)
+   assert txt in hdr, f"need '{txt}' col (raw CSV?)"
++  assert klass in hdr, f"need '{klass}' col"
+   t, k = hdr.index(txt), hdr.index(klass)
+   for r in rows:
+     ws = [w for w in re.findall(r'\b[a-zA-Z]+\b',
+@@ -792,11 +795,17 @@
+   """Class with highest CNB score for row."""
+   return max(ws, key=lambda k: cnbLikes(ws, data, r, k))
+ 
+-def _tm_recall(ws: dict, data: Data, key: int) -> int:
+-  """Percent of positives correctly predicted."""
++def _tm_recall(ws: dict, data: Data, key: int) -> float:
++  """Fraction of positives correctly predicted: tp/(tp+fn)."""
+   ps = [r for r in data.rows if r[key] == "yes"]
+-  if not ps: return 0
+-  return int(100 * sum(_tm_best(ws, data, r) == "yes" for r in ps) / len(ps))
++  if not ps: return 0.0
++  return sum(_tm_best(ws, data, r) == "yes" for r in ps) / len(ps)
++
++def _tm_falsealarm(ws: dict, data: Data, key: int) -> float:
++  """Fraction of negatives wrongly predicted yes: fp/(fp+tn)."""
++  ns = [r for r in data.rows if r[key] != "yes"]
++  if not ns: return 0.0
++  return sum(_tm_best(ws, data, r) == "yes" for r in ns) / len(ns)
+ 
+ def _tm_iqr(vs: list) -> float:
+   """Interquartile range."""
+@@ -826,7 +835,7 @@
+     lab = _tm_warm(pos, idx); pool = idx - lab; trail = []
+     while True:
+       ws = cnb(data, [data.rows[i] for i in lab])
+-      trail.append(_tm_recall(ws, data, key))
++      trail.append((_tm_recall(ws, data, key), _tm_falsealarm(ws, data, key)))
+       if len(lab) >= the.learn.budget or not pool: break
+       pick_i = max(pool, key=lambda i:
+         cnbLikes(ws, data, data.rows[i], "yes"))
+@@ -836,12 +845,15 @@
+   w0 = the.textmine.yes + the.textmine.no
+   print(f"\n{'=' * 40}\nActive CNB {the.textmine.valid}x "
+         f"warm={w0} B={the.learn.budget}\n{'=' * 40}")
+-  rows = [["labeled", "pd", "iqr"]]
++  rows = [["labeled", "pd", "pd_iqr", "fa", "fa_iqr"]]
+   for s in range(n):
+-    vs = [t[s] for t in trails]; md = statistics.median(vs)
+-    rows.append([w0 + s, md, _tm_iqr(vs) if len(vs) > 1 else 0])
+-  _tm_align(rows)
+-  return True
++    rs = [t[s][0] for t in trails]; fs = [t[s][1] for t in trails]
++    rows.append([w0 + s,
++                 statistics.median(rs), _tm_iqr(rs) if len(rs) > 1 else 0,
++                 statistics.median(fs), _tm_iqr(fs) if len(fs) > 1 else 0])
++  _tm_align([r if i == 0 else r[:1] + [round(v, 3) for v in r[1:]]
++             for i, r in enumerate(rows)])
++  return rows
+ 
+ def _tm_align(rows: list) -> None:
+   """Print list-of-lists as right-aligned table."""

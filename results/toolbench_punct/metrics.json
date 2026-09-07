@@ -1,0 +1,148 @@
+{
+  "run_name": "toolbench_punct",
+  "config": {
+    "run_name": "toolbench_punct",
+    "data_root": "/mnt/beegfs/lli66/ez-tool/data/raw/toolgen_data/data/retrieval",
+    "settings": [
+      "multi_domain"
+    ],
+    "retrievers": [
+      {
+        "name": "P_nltk_minus_punctuation",
+        "type": "bm25_okapi",
+        "k1": 1.5,
+        "b": 0.75,
+        "epsilon": 0.25,
+        "tokenizer": "nltk_nopunct"
+      }
+    ],
+    "top_k": 100,
+    "ks": [
+      1,
+      3,
+      5
+    ],
+    "splits": [
+      [
+        "G1",
+        "instruction"
+      ],
+      [
+        "G1",
+        "tool"
+      ],
+      [
+        "G1",
+        "category"
+      ],
+      [
+        "G2",
+        "instruction"
+      ],
+      [
+        "G2",
+        "category"
+      ],
+      [
+        "G3",
+        "instruction"
+      ]
+    ]
+  },
+  "results": {
+    "multi_domain": {
+      "P_nltk_minus_punctuation": {
+        "G1_instruction": {
+          "mrr": 0.5049199588277173,
+          "recall@1": 0.1938775510204081,
+          "precision@1": 0.4,
+          "ndcg@1": 0.40816326530612246,
+          "ndcg_toolgen@1": 0.40816326530612246,
+          "recall@3": 0.35501700680272114,
+          "precision@3": 0.24999999999999992,
+          "ndcg@3": 0.36944549666385146,
+          "ndcg_toolgen@3": 0.3938204729904458,
+          "recall@5": 0.4009353741496599,
+          "precision@5": 0.17299999999999977,
+          "ndcg@5": 0.388589885590603,
+          "ndcg_toolgen@5": 0.41793988899020745
+        },
+        "G1_tool": {
+          "mrr": 0.39595984976294907,
+          "recall@1": 0.15971524288107203,
+          "precision@1": 0.305,
+          "ndcg@1": 0.3065326633165829,
+          "ndcg_toolgen@1": 0.3065326633165829,
+          "recall@3": 0.30979899497487434,
+          "precision@3": 0.20833333333333331,
+          "ndcg@3": 0.3045604502565743,
+          "ndcg_toolgen@3": 0.3230392788013899,
+          "recall@5": 0.3675879396984925,
+          "precision@5": 0.14899999999999977,
+          "ndcg@5": 0.33125615816512954,
+          "ndcg_toolgen@5": 0.3523597168781972
+        },
+        "G1_category": {
+          "mrr": 0.4071611897214298,
+          "recall@1": 0.1631666666666667,
+          "precision@1": 0.32,
+          "ndcg@1": 0.32,
+          "ndcg_toolgen@1": 0.32,
+          "recall@3": 0.2958333333333333,
+          "precision@3": 0.20166666666666672,
+          "ndcg@3": 0.29691661728955476,
+          "ndcg_toolgen@3": 0.33307656221328275,
+          "recall@5": 0.343,
+          "precision@5": 0.14299999999999977,
+          "ndcg@5": 0.31673944960695577,
+          "ndcg_toolgen@5": 0.35616329264156166
+        },
+        "G2_instruction": {
+          "mrr": 0.39970206775272843,
+          "recall@1": 0.13041666666666665,
+          "precision@1": 0.305,
+          "ndcg@1": 0.305,
+          "ndcg_toolgen@1": 0.305,
+          "recall@3": 0.22375000000000003,
+          "precision@3": 0.18000000000000005,
+          "ndcg@3": 0.2450131520823335,
+          "ndcg_toolgen@3": 0.2978005333399993,
+          "recall@5": 0.28374999999999995,
+          "precision@5": 0.1359999999999998,
+          "ndcg@5": 0.2714890827192146,
+          "ndcg_toolgen@5": 0.33572138772798
+        },
+        "G2_category": {
+          "mrr": 0.36052175693455574,
+          "recall@1": 0.13358458961474032,
+          "precision@1": 0.2914572864321608,
+          "ndcg@1": 0.2914572864321608,
+          "ndcg_toolgen@1": 0.2914572864321608,
+          "recall@3": 0.21834170854271354,
+          "precision@3": 0.16247906197654938,
+          "ndcg@3": 0.23181887254364275,
+          "ndcg_toolgen@3": 0.29917227810929,
+          "recall@5": 0.257286432160804,
+          "precision@5": 0.115577889447236,
+          "ndcg@5": 0.2507604271706335,
+          "ndcg_toolgen@5": 0.3244619994874844
+        },
+        "G3_instruction": {
+          "mrr": 0.2444376628761426,
+          "recall@1": 0.06983333333333333,
+          "precision@1": 0.18,
+          "ndcg@1": 0.18,
+          "ndcg_toolgen@1": 0.18,
+          "recall@3": 0.09816666666666668,
+          "precision@3": 0.0833333333333333,
+          "ndcg@3": 0.11739686561157531,
+          "ndcg_toolgen@3": 0.163981367786785,
+          "recall@5": 0.13133333333333336,
+          "precision@5": 0.07000000000000003,
+          "ndcg@5": 0.1332008090309288,
+          "ndcg_toolgen@5": 0.19509650600584785
+        }
+      }
+    }
+  }
+}

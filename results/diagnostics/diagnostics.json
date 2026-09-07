@@ -1,0 +1,1238 @@
+{
+ "source": {
+  "g1_dir": "/mnt/beegfs/lli66/ez-tool/data/raw/toolgen_data/data/retrieval/G1",
+  "files": [
+   "train.json",
+   "test_G1_instruction.json",
+   "test_G1_tool.json",
+   "test_G1_category.json"
+  ],
+  "label_field": "relevant APIs (list of [tool_name, api_name])"
+ },
+ "step0": {
+  "records_train": 88395,
+  "records_instruction": 200,
+  "records_tool": 200,
+  "records_category": 200,
+  "instances_kept": 88995,
+  "api_docs": 10355
+ },
+ "d1": {
+  "category": {
+   "level": "category",
+   "classes": 49,
+   "label_mentions": 89301,
+   "instances": 88995,
+   "min": 18,
+   "p25": 448.0,
+   "median": 1209.0,
+   "p75": 2158.0,
+   "max": 12514,
+   "mean": 1822.469387755102,
+   "n_eq_1": 0,
+   "n_le_3": 0,
+   "n_le_5": 0,
+   "n_le_10": 0,
+   "top10_share": 0.5864995912699745,
+   "perplexity": 28.551606332150232,
+   "top10_classes": [
+    [
+     "data",
+     12514
+    ],
+    [
+     "finance",
+     7605
+    ],
+    [
+     "sports",
+     6854
+    ],
+    [
+     "entertainment",
+     5031
+    ],
+    [
+     "social",
+     4352
+    ],
+    [
+     "tools",
+     3969
+    ],
+    [
+     "news_media",
+     3777
+    ],
+    [
+     "business",
+     2997
+    ],
+    [
+     "other",
+     2665
+    ],
+    [
+     "ecommerce",
+     2611
+    ]
+   ],
+   "share_classes_le_3": 0.0,
+   "share_classes_le_5": 0.0,
+   "mentions_in_classes_le_3": 0.0,
+   "mentions_in_classes_le_5": 0.0,
+   "mentions_in_classes_le_10": 0.0,
+   "verdict": "VIABLE at category level on support grounds: median 1209 instances per class."
+  },
+  "tool": {
+   "level": "tool",
+   "classes": 3225,
+   "label_mentions": 88995,
+   "instances": 88995,
+   "min": 1,
+   "p25": 3.0,
+   "median": 12.0,
+   "p75": 50.0,
+   "max": 395,
+   "mean": 27.595348837209304,
+   "n_eq_1": 10,
+   "n_le_3": 1528,
+   "n_le_5": 1536,
+   "n_le_10": 1593,
+   "top10_share": 0.018023484465419407,
+   "perplexity": 1859.3206733077018,
+   "top10_classes": [
+    [
+     "\ud83d\udc4b demo project",
+     395
+    ],
+    [
+     "\ud83d\udc4b onboarding project",
+     221
+    ],
+    [
+     "currency converter_v2",
+     145
+    ],
+    [
+     "dns lookup",
+     140
+    ],
+    [
+     "\ud83d\udc4b demo project_v2",
+     135
+    ],
+    [
+     "quotes_v2",
+     125
+    ],
+    [
+     "house plants",
+     122
+    ],
+    [
+     "\ud83d\udc4b demo project_v3",
+     116
+    ],
+    [
+     "currency_v2",
+     105
+    ],
+    [
+     "bet-at-home",
+     100
+    ]
+   ],
+   "share_classes_le_3": 0.4737984496124031,
+   "share_classes_le_5": 0.4762790697674419,
+   "mentions_in_classes_le_3": 0.051205123883364234,
+   "mentions_in_classes_le_5": 0.05162087757739199,
+   "mentions_in_classes_le_10": 0.056800943873251304,
+   "verdict": "VIABLE at tool level on support grounds: median 12 instances per class."
+  },
+  "api": {
+   "level": "api",
+   "classes": 10056,
+   "label_mentions": 198065,
+   "instances": 88995,
+   "min": 1,
+   "p25": 4.0,
+   "median": 13.0,
+   "p75": 27.0,
+   "max": 218,
+   "mean": 19.696201272871917,
+   "n_eq_1": 205,
+   "n_le_3": 2261,
+   "n_le_5": 2816,
+   "n_le_10": 4315,
+   "top10_share": 0.006932067755534799,
+   "perplexity": 6595.332121968726,
+   "top10_classes": [
+    [
+     "\ud83d\udc4b demo project\tget product",
+     218
+    ],
+    [
+     "\ud83d\udc4b demo project\tget categories",
+     172
+    ],
+    [
+     "\ud83d\udc4b demo project\tget products in category",
+     165
+    ],
+    [
+     "currency converter_v2\tconvert",
+     145
+    ],
+    [
+     "\ud83d\udc4b demo project\tget order",
+     139
+    ],
+    [
+     "\ud83d\udc4b demo project\tget user orders",
+     122
+    ],
+    [
+     "\ud83d\udc4b onboarding project\tget categories",
+     112
+    ],
+    [
+     "bet-at-home\tmatches",
+     100
+    ],
+    [
+     "bet-at-home\todds",
+     100
+    ],
+    [
+     "admiralbet\tmatches",
+     100
+    ]
+   ],
+   "share_classes_le_3": 0.22484089101034208,
+   "share_classes_le_5": 0.28003182179793157,
+   "mentions_in_classes_le_3": 0.030994875419685458,
+   "mentions_in_classes_le_5": 0.04365738520182768,
+   "mentions_in_classes_le_10": 0.10448590109307551,
+   "verdict": "VIABLE at api level on support grounds: median 13 instances per class."
+  }
+ },
+ "d2": {
+  "n_queries": 88995,
+  "n_apis": 10355,
+  "tokenizer": "ezr pipeline, split_identifiers=True, both sides",
+  "doc_fields": "api_name + api_description + required/optional param names and descriptions",
+  "overlap_true": {
+   "mean": 0.16338618099689484,
+   "p5": 0.0416666679084301,
+   "p25": 0.1034482792019844,
+   "p50": 0.1538461595773697,
+   "p75": 0.21052631735801697,
+   "p95": 0.3181818127632141
+  },
+  "overlap_rand": {
+   "mean": 0.013169726356863976,
+   "p5": 0.0,
+   "p25": 0.0062500000931322575,
+   "p50": 0.011385621502995491,
+   "p75": 0.017942555248737335,
+   "p95": 0.03154822066426277
+  },
+  "ratio_of_means": 12.406193733215332,
+  "ratio_per_instance": {
+   "p5": 2.8533899784088135,
+   "p25": 7.2280378341674805,
+   "p50": 13.05896282196045,
+   "p75": 25.71428680419922,
+   "p95": 521.3181762695312
+  },
+  "ratio_per_instance_undefined": 4576,
+  "rank_expected": {
+   "median": 62.0,
+   "mean": 404.7172931063543,
+   "p5": 1.0,
+   "p25": 10.0,
+   "p50": 62.0,
+   "p75": 282.5,
+   "p95": 2019.5,
+   "top1": 0.06385752008539805,
+   "top5": 0.1836395303106916,
+   "top10": 0.2504410360132592
+  },
+  "rank_optimistic": {
+   "median": 30.0,
+   "top1": 0.13283892353503005,
+   "top5": 0.2630821956289679,
+   "top10": 0.34490701724816003
+  },
+  "rank_jaccard": {
+   "median": 4.0,
+   "mean": 220.17902691162425,
+   "p5": 1.0,
+   "p25": 1.0,
+   "p50": 4.0,
+   "p75": 35.0,
+   "p95": 813.1500000000015,
+   "top1": 0.3048598235855947,
+   "top5": 0.5370975897522333,
+   "top10": 0.6160570818585314
+  },
+  "by_category": {
+   "Advertising": {
+    "instances": 1209,
+    "overlap_true_mean": 0.14173142611980438,
+    "overlap_rand_mean": 0.014669807627797127,
+    "ratio_of_means": 9.661437034606934,
+    "top5_rate_expected": 0.18031430934656742,
+    "median_rank_expected": 200.0,
+    "top5_rate_jaccard": 0.3333333333333333,
+    "median_rank_jaccard": 26.0
+   },
+   "Artificial_Intelligence_Machine_Learning": {
+    "instances": 958,
+    "overlap_true_mean": 0.17019739747047424,
+    "overlap_rand_mean": 0.012846406549215317,
+    "ratio_of_means": 13.248638153076172,
+    "top5_rate_expected": 0.10334029227557412,
+    "median_rank_expected": 58.5,
+    "top5_rate_jaccard": 0.6931106471816284,
+    "median_rank_jaccard": 1.5
+   },
+   "Business": {
+    "instances": 2997,
+    "overlap_true_mean": 0.1582382172346115,
+    "overlap_rand_mean": 0.014062903821468353,
+    "ratio_of_means": 11.252172470092773,
+    "top5_rate_expected": 0.23023023023023023,
+    "median_rank_expected": 59.5,
+    "top5_rate_jaccard": 0.4894894894894895,
+    "median_rank_jaccard": 6.0
+   },
+   "Business_Software": {
+    "instances": 1354,
+    "overlap_true_mean": 0.17146983742713928,
+    "overlap_rand_mean": 0.015315569937229156,
+    "ratio_of_means": 11.195785522460938,
+    "top5_rate_expected": 0.16617429837518463,
+    "median_rank_expected": 117.5,
+    "top5_rate_jaccard": 0.5805022156573116,
+    "median_rank_jaccard": 3.0
+   },
+   "Commerce": {
+    "instances": 1074,
+    "overlap_true_mean": 0.12327135354280472,
+    "overlap_rand_mean": 0.014117388986051083,
+    "ratio_of_means": 8.731880187988281,
+    "top5_rate_expected": 0.03445065176908752,
+    "median_rank_expected": 297.25,
+    "top5_rate_jaccard": 0.3091247672253259,
+    "median_rank_jaccard": 19.0
+   },
+   "Communication": {
+    "instances": 1661,
+    "overlap_true_mean": 0.18890498578548431,
+    "overlap_rand_mean": 0.015212344005703926,
+    "ratio_of_means": 12.417875289916992,
+    "top5_rate_expected": 0.23118603251053582,
+    "median_rank_expected": 36.0,
+    "top5_rate_jaccard": 0.6134858518964479,
+    "median_rank_jaccard": 2.5
+   },
+   "Cryptography": {
+    "instances": 121,
+    "overlap_true_mean": 0.1938687562942505,
+    "overlap_rand_mean": 0.01514849066734314,
+    "ratio_of_means": 12.797892570495605,
+    "top5_rate_expected": 0.2644628099173554,
+    "median_rank_expected": 32.5,
+    "top5_rate_jaccard": 0.8429752066115702,
+    "median_rank_jaccard": 2.0
+   },
+   "Cybersecurity": {
+    "instances": 115,
+    "overlap_true_mean": 0.2009861022233963,
+    "overlap_rand_mean": 0.014355805702507496,
+    "ratio_of_means": 14.000335693359375,
+    "top5_rate_expected": 0.34782608695652173,
+    "median_rank_expected": 16.5,
+    "top5_rate_jaccard": 0.45217391304347826,
+    "median_rank_jaccard": 11.5
+   },
+   "Data": {
+    "instances": 12509,
+    "overlap_true_mean": 0.155766561627388,
+    "overlap_rand_mean": 0.013601974584162235,
+    "ratio_of_means": 11.451761245727539,
+    "top5_rate_expected": 0.1740346950195859,
+    "median_rank_expected": 62.5,
+    "top5_rate_jaccard": 0.519306099608282,
+    "median_rank_jaccard": 4.5
+   },
+   "Database": {
+    "instances": 1929,
+    "overlap_true_mean": 0.14025640487670898,
+    "overlap_rand_mean": 0.01502067968249321,
+    "ratio_of_means": 9.337553977966309,
+    "top5_rate_expected": 0.0705028512182478,
+    "median_rank_expected": 303.0,
+    "top5_rate_jaccard": 0.3908761016070503,
+    "median_rank_jaccard": 18.5
+   },
+   "Devices": {
+    "instances": 373,
+    "overlap_true_mean": 0.13924497365951538,
+    "overlap_rand_mean": 0.013965691439807415,
+    "ratio_of_means": 9.970503807067871,
+    "top5_rate_expected": 0.07506702412868632,
+    "median_rank_expected": 125.5,
+    "top5_rate_jaccard": 0.5308310991957105,
+    "median_rank_jaccard": 4.0
+   },
+   "Education": {
+    "instances": 1479,
+    "overlap_true_mean": 0.1577121764421463,
+    "overlap_rand_mean": 0.011938062496483326,
+    "ratio_of_means": 13.210868835449219,
+    "top5_rate_expected": 0.1947261663286004,
+    "median_rank_expected": 60.5,
+    "top5_rate_jaccard": 0.5801217038539553,
+    "median_rank_jaccard": 2.5
+   },
+   "Email": {
+    "instances": 664,
+    "overlap_true_mean": 0.1435258686542511,
+    "overlap_rand_mean": 0.014417104423046112,
+    "ratio_of_means": 9.955248832702637,
+    "top5_rate_expected": 0.07078313253012049,
+    "median_rank_expected": 335.0,
+    "top5_rate_jaccard": 0.286144578313253,
+    "median_rank_jaccard": 23.5
+   },
+   "Energy": {
+    "instances": 231,
+    "overlap_true_mean": 0.12110549211502075,
+    "overlap_rand_mean": 0.010784301906824112,
+    "ratio_of_means": 11.2297945022583,
+    "top5_rate_expected": 0.09523809523809523,
+    "median_rank_expected": 147.5,
+    "top5_rate_jaccard": 0.4458874458874459,
+    "median_rank_jaccard": 17.5
+   },
+   "Entertainment": {
+    "instances": 5031,
+    "overlap_true_mean": 0.16897907853126526,
+    "overlap_rand_mean": 0.012554126791656017,
+    "ratio_of_means": 13.460041999816895,
+    "top5_rate_expected": 0.19558735837805605,
+    "median_rank_expected": 60.0,
+    "top5_rate_jaccard": 0.6048499304313257,
+    "median_rank_jaccard": 2.5
+   },
+   "Events": {
+    "instances": 477,
+    "overlap_true_mean": 0.16863913834095,
+    "overlap_rand_mean": 0.013133450411260128,
+    "ratio_of_means": 12.840429306030273,
+    "top5_rate_expected": 0.16771488469601678,
+    "median_rank_expected": 43.0,
+    "top5_rate_jaccard": 0.6771488469601677,
+    "median_rank_jaccard": 1.5
+   },
+   "Finance": {
+    "instances": 7534,
+    "overlap_true_mean": 0.1879059076309204,
+    "overlap_rand_mean": 0.012206951156258583,
+    "ratio_of_means": 15.393352508544922,
+    "top5_rate_expected": 0.2914786302097159,
+    "median_rank_expected": 21.0,
+    "top5_rate_jaccard": 0.6422882930714096,
+    "median_rank_jaccard": 2.0
+   },
+   "Financial": {
+    "instances": 1545,
+    "overlap_true_mean": 0.17621098458766937,
+    "overlap_rand_mean": 0.011336774565279484,
+    "ratio_of_means": 15.54330825805664,
+    "top5_rate_expected": 0.18511326860841423,
+    "median_rank_expected": 34.0,
+    "top5_rate_jaccard": 0.5676375404530745,
+    "median_rank_jaccard": 4.0
+   },
+   "Food": {
+    "instances": 1726,
+    "overlap_true_mean": 0.1399647295475006,
+    "overlap_rand_mean": 0.013113153167068958,
+    "ratio_of_means": 10.673613548278809,
+    "top5_rate_expected": 0.19235225955967555,
+    "median_rank_expected": 144.25,
+    "top5_rate_jaccard": 0.4803012746234067,
+    "median_rank_jaccard": 6.5
+   },
+   "Gaming": {
+    "instances": 2158,
+    "overlap_true_mean": 0.19892588257789612,
+    "overlap_rand_mean": 0.01244131475687027,
+    "ratio_of_means": 15.989136695861816,
+    "top5_rate_expected": 0.2701575532900834,
+    "median_rank_expected": 19.5,
+    "top5_rate_jaccard": 0.7469879518072289,
+    "median_rank_jaccard": 1.0
+   },
+   "Health_and_Fitness": {
+    "instances": 817,
+    "overlap_true_mean": 0.19998741149902344,
+    "overlap_rand_mean": 0.009527607820928097,
+    "ratio_of_means": 20.990306854248047,
+    "top5_rate_expected": 0.4920440636474908,
+    "median_rank_expected": 5.5,
+    "top5_rate_jaccard": 0.7637698898408812,
+    "median_rank_jaccard": 1.5
+   },
+   "Jobs": {
+    "instances": 134,
+    "overlap_true_mean": 0.170816570520401,
+    "overlap_rand_mean": 0.010079948231577873,
+    "ratio_of_means": 16.94617462158203,
+    "top5_rate_expected": 0.4925373134328358,
+    "median_rank_expected": 5.5,
+    "top5_rate_jaccard": 0.7164179104477612,
+    "median_rank_jaccard": 1.0
+   },
+   "Location": {
+    "instances": 2588,
+    "overlap_true_mean": 0.1313585340976715,
+    "overlap_rand_mean": 0.012485628016293049,
+    "ratio_of_means": 10.52077865600586,
+    "top5_rate_expected": 0.13253477588871715,
+    "median_rank_expected": 79.5,
+    "top5_rate_jaccard": 0.42001545595054096,
+    "median_rank_jaccard": 13.5
+   },
+   "Logistics": {
+    "instances": 261,
+    "overlap_true_mean": 0.16191935539245605,
+    "overlap_rand_mean": 0.014685462228953838,
+    "ratio_of_means": 11.025826454162598,
+    "top5_rate_expected": 0.21839080459770116,
+    "median_rank_expected": 385.0,
+    "top5_rate_jaccard": 0.47509578544061304,
+    "median_rank_jaccard": 24.0
+   },
+   "Mapping": {
+    "instances": 1331,
+    "overlap_true_mean": 0.13080158829689026,
+    "overlap_rand_mean": 0.011399851180613041,
+    "ratio_of_means": 11.473973274230957,
+    "top5_rate_expected": 0.135236664162284,
+    "median_rank_expected": 57.5,
+    "top5_rate_jaccard": 0.43425995492111197,
+    "median_rank_jaccard": 10.0
+   },
+   "Media": {
+    "instances": 1274,
+    "overlap_true_mean": 0.1715412586927414,
+    "overlap_rand_mean": 0.012993203476071358,
+    "ratio_of_means": 13.202383995056152,
+    "top5_rate_expected": 0.18995290423861852,
+    "median_rank_expected": 56.5,
+    "top5_rate_jaccard": 0.5879120879120879,
+    "median_rank_jaccard": 3.0
+   },
+   "Medical": {
+    "instances": 375,
+    "overlap_true_mean": 0.1585317850112915,
+    "overlap_rand_mean": 0.013524949550628662,
+    "ratio_of_means": 11.72143268585205,
+    "top5_rate_expected": 0.25333333333333335,
+    "median_rank_expected": 79.5,
+    "top5_rate_jaccard": 0.664,
+    "median_rank_jaccard": 2.0
+   },
+   "Monitoring": {
+    "instances": 411,
+    "overlap_true_mean": 0.16756583750247955,
+    "overlap_rand_mean": 0.014546268619596958,
+    "ratio_of_means": 11.519506454467773,
+    "top5_rate_expected": 0.25790754257907544,
+    "median_rank_expected": 77.0,
+    "top5_rate_jaccard": 0.5523114355231143,
+    "median_rank_jaccard": 4.0
+   },
+   "Movies": {
+    "instances": 718,
+    "overlap_true_mean": 0.1465422362089157,
+    "overlap_rand_mean": 0.011979442089796066,
+    "ratio_of_means": 12.232810020446777,
+    "top5_rate_expected": 0.12813370473537605,
+    "median_rank_expected": 88.5,
+    "top5_rate_jaccard": 0.467966573816156,
+    "median_rank_jaccard": 7.25
+   },
+   "Music": {
+    "instances": 1420,
+    "overlap_true_mean": 0.16781765222549438,
+    "overlap_rand_mean": 0.01250205934047699,
+    "ratio_of_means": 13.423200607299805,
+    "top5_rate_expected": 0.18450704225352113,
+    "median_rank_expected": 39.0,
+    "top5_rate_jaccard": 0.5598591549295775,
+    "median_rank_jaccard": 3.5
+   },
+   "News_Media": {
+    "instances": 3777,
+    "overlap_true_mean": 0.16493098437786102,
+    "overlap_rand_mean": 0.01200276892632246,
+    "ratio_of_means": 13.74107837677002,
+    "top5_rate_expected": 0.13608684140852528,
+    "median_rank_expected": 63.0,
+    "top5_rate_jaccard": 0.5562615832671433,
+    "median_rank_jaccard": 4.0
+   },
+   "Other": {
+    "instances": 2665,
+    "overlap_true_mean": 0.1676236093044281,
+    "overlap_rand_mean": 0.015256376005709171,
+    "ratio_of_means": 10.9871187210083,
+    "top5_rate_expected": 0.1050656660412758,
+    "median_rank_expected": 133.5,
+    "top5_rate_jaccard": 0.3444652908067542,
+    "median_rank_jaccard": 8.5
+   },
+   "Payments": {
+    "instances": 109,
+    "overlap_true_mean": 0.13792051374912262,
+    "overlap_rand_mean": 0.01410974096506834,
+    "ratio_of_means": 9.7748441696167,
+    "top5_rate_expected": 0.11009174311926606,
+    "median_rank_expected": 129.5,
+    "top5_rate_jaccard": 0.44954128440366975,
+    "median_rank_jaccard": 8.0
+   },
+   "Reward": {
+    "instances": 109,
+    "overlap_true_mean": 0.18601006269454956,
+    "overlap_rand_mean": 0.012533909641206264,
+    "ratio_of_means": 14.840545654296875,
+    "top5_rate_expected": 0.10091743119266056,
+    "median_rank_expected": 42.5,
+    "top5_rate_jaccard": 0.926605504587156,
+    "median_rank_jaccard": 1.0
+   },
+   "SMS": {
+    "instances": 448,
+    "overlap_true_mean": 0.2021777629852295,
+    "overlap_rand_mean": 0.019206328317523003,
+    "ratio_of_means": 10.52662181854248,
+    "top5_rate_expected": 0.140625,
+    "median_rank_expected": 63.0,
+    "top5_rate_jaccard": 0.7098214285714286,
+    "median_rank_jaccard": 2.0
+   },
+   "Science": {
+    "instances": 638,
+    "overlap_true_mean": 0.16422221064567566,
+    "overlap_rand_mean": 0.010212276130914688,
+    "ratio_of_means": 16.080862045288086,
+    "top5_rate_expected": 0.29780564263322884,
+    "median_rank_expected": 20.0,
+    "top5_rate_jaccard": 0.6661442006269592,
+    "median_rank_jaccard": 2.0
+   },
+   "Search": {
+    "instances": 1303,
+    "overlap_true_mean": 0.13667325675487518,
+    "overlap_rand_mean": 0.01527128741145134,
+    "ratio_of_means": 8.949687957763672,
+    "top5_rate_expected": 0.10974673829623945,
+    "median_rank_expected": 146.5,
+    "top5_rate_jaccard": 0.3983115886415963,
+    "median_rank_jaccard": 14.5
+   },
+   "Social": {
+    "instances": 4314,
+    "overlap_true_mean": 0.17028382420539856,
+    "overlap_rand_mean": 0.014460201375186443,
+    "ratio_of_means": 11.776034355163574,
+    "top5_rate_expected": 0.13885025498377376,
+    "median_rank_expected": 104.75,
+    "top5_rate_jaccard": 0.4995363931386185,
+    "median_rank_jaccard": 5.5
+   },
+   "Sports": {
+    "instances": 6727,
+    "overlap_true_mean": 0.1715877652168274,
+    "overlap_rand_mean": 0.013019219040870667,
+    "ratio_of_means": 13.179574012756348,
+    "top5_rate_expected": 0.18983202021703582,
+    "median_rank_expected": 72.5,
+    "top5_rate_jaccard": 0.5393191615876319,
+    "median_rank_jaccard": 4.0
+   },
+   "Storage": {
+    "instances": 18,
+    "overlap_true_mean": 0.15708227455615997,
+    "overlap_rand_mean": 0.011799987405538559,
+    "ratio_of_means": 13.312071800231934,
+    "top5_rate_expected": 0.1111111111111111,
+    "median_rank_expected": 137.75,
+    "top5_rate_jaccard": 0.5,
+    "median_rank_jaccard": 4.75
+   },
+   "Text_Analysis": {
+    "instances": 669,
+    "overlap_true_mean": 0.17836302518844604,
+    "overlap_rand_mean": 0.009760926477611065,
+    "ratio_of_means": 18.273164749145508,
+    "top5_rate_expected": 0.19133034379671152,
+    "median_rank_expected": 23.5,
+    "top5_rate_jaccard": 0.7070254110612855,
+    "median_rank_jaccard": 1.5
+   },
+   "Tools": {
+    "instances": 3969,
+    "overlap_true_mean": 0.16682131588459015,
+    "overlap_rand_mean": 0.01271861232817173,
+    "ratio_of_means": 13.116313934326172,
+    "top5_rate_expected": 0.15570672713529857,
+    "median_rank_expected": 84.5,
+    "top5_rate_jaccard": 0.5510204081632653,
+    "median_rank_jaccard": 3.5
+   },
+   "Translation": {
+    "instances": 661,
+    "overlap_true_mean": 0.17131265997886658,
+    "overlap_rand_mean": 0.013522098772227764,
+    "ratio_of_means": 12.669088363647461,
+    "top5_rate_expected": 0.049924357034795766,
+    "median_rank_expected": 105.5,
+    "top5_rate_jaccard": 0.5037821482602118,
+    "median_rank_jaccard": 5.0
+   },
+   "Transportation": {
+    "instances": 671,
+    "overlap_true_mean": 0.17288699746131897,
+    "overlap_rand_mean": 0.011855078861117363,
+    "ratio_of_means": 14.583369255065918,
+    "top5_rate_expected": 0.3412816691505216,
+    "median_rank_expected": 15.0,
+    "top5_rate_jaccard": 0.6005961251862891,
+    "median_rank_jaccard": 2.0
+   },
+   "Travel": {
+    "instances": 2506,
+    "overlap_true_mean": 0.14231421053409576,
+    "overlap_rand_mean": 0.012177743948996067,
+    "ratio_of_means": 11.686418533325195,
+    "top5_rate_expected": 0.2306464485235435,
+    "median_rank_expected": 40.0,
+    "top5_rate_jaccard": 0.5323224261771747,
+    "median_rank_jaccard": 4.5
+   },
+   "Video_Images": {
+    "instances": 1150,
+    "overlap_true_mean": 0.17609170079231262,
+    "overlap_rand_mean": 0.014383949339389801,
+    "ratio_of_means": 12.242236137390137,
+    "top5_rate_expected": 0.21913043478260869,
+    "median_rank_expected": 48.0,
+    "top5_rate_jaccard": 0.5895652173913043,
+    "median_rank_jaccard": 2.0
+   },
+   "Visual_Recognition": {
+    "instances": 417,
+    "overlap_true_mean": 0.18555797636508942,
+    "overlap_rand_mean": 0.015181231312453747,
+    "ratio_of_means": 12.222854614257812,
+    "top5_rate_expected": 0.35731414868105515,
+    "median_rank_expected": 10.5,
+    "top5_rate_jaccard": 0.7122302158273381,
+    "median_rank_jaccard": 2.0
+   },
+   "Weather": {
+    "instances": 1759,
+    "overlap_true_mean": 0.14029932022094727,
+    "overlap_rand_mean": 0.009817623533308506,
+    "ratio_of_means": 14.290557861328125,
+    "top5_rate_expected": 0.18419556566230813,
+    "median_rank_expected": 36.5,
+    "top5_rate_jaccard": 0.49459920409323477,
+    "median_rank_jaccard": 5.5
+   },
+   "eCommerce": {
+    "instances": 2611,
+    "overlap_true_mean": 0.1505385786294937,
+    "overlap_rand_mean": 0.015203630551695824,
+    "ratio_of_means": 9.9014892578125,
+    "top5_rate_expected": 0.08119494446572195,
+    "median_rank_expected": 94.5,
+    "top5_rate_jaccard": 0.4553810800459594,
+    "median_rank_jaccard": 7.0
+   }
+  },
+  "verdict": "CONFOUNDED: a parameter-free overlap ranker puts ground truth in the top 5 for 53.7% of instances."
+ },
+ "d3": {
+  "n_queries": 88995,
+  "query_terms_after_pipeline": {
+   "mean": 22.641395584021573,
+   "median": 22,
+   "min": 3,
+   "max": 143
+  },
+  "sparsity": [
+   {
+    "top_n": "100",
+    "vocab": 100,
+    "mean_nonzero": 9.783021518062812,
+    "median_nonzero": 10,
+    "frac_zero": 0.0003708073487274566,
+    "frac_le_2": 0.006494746895893027
+   },
+   {
+    "top_n": "500",
+    "vocab": 500,
+    "mean_nonzero": 15.087521770886005,
+    "median_nonzero": 15,
+    "frac_zero": 0.00011236586325074442,
+    "frac_le_2": 0.0005281195572784988
+   },
+   {
+    "top_n": "1000",
+    "vocab": 1000,
+    "mean_nonzero": 16.914961514691836,
+    "median_nonzero": 17,
+    "frac_zero": 0.00011236586325074442,
+    "frac_le_2": 0.00031462441710208437
+   },
+   {
+    "top_n": "5000",
+    "vocab": 5000,
+    "mean_nonzero": 19.130276981852912,
+    "median_nonzero": 19,
+    "frac_zero": 0.0,
+    "frac_le_2": 1.1236586325074442e-05
+   },
+   {
+    "top_n": "all",
+    "vocab": 11123,
+    "mean_nonzero": 19.32134389572448,
+    "median_nonzero": 19,
+    "frac_zero": 0.0,
+    "frac_le_2": 0.0
+   }
+  ],
+  "tokenizer_damage_api_names": {
+   "n": 10355,
+   "frac_empty_ezr": 0.04036697247706422,
+   "frac_damaged_ezr": 0.19333655239014969,
+   "frac_empty_after_split": 0.006084017382906808
+  },
+  "tokenizer_damage_tool_names": {
+   "n": 3249,
+   "frac_empty_ezr": 0.05293936595875654,
+   "frac_damaged_ezr": 0.23391812865497075,
+   "frac_empty_after_split": 0.0046168051708217915
+  },
+  "top30_query_terms": [
+   [
+    "lik",
+    34358.17012373292
+   ],
+   [
+    "would",
+    34093.843228207006
+   ],
+   [
+    "new",
+    33964.63040935143
+   ],
+   [
+    "list",
+    33715.556758923274
+   ],
+   [
+    "need",
+    33475.831560837534
+   ],
+   [
+    "detail",
+    33371.708288584545
+   ],
+   [
+    "want",
+    32812.56885811316
+   ],
+   [
+    "additional",
+    32805.19627906492
+   ],
+   [
+    "inform",
+    31639.740345893973
+   ],
+   [
+    "also",
+    31405.102740603535
+   ],
+   [
+    "pleas",
+    30905.719703130126
+   ],
+   [
+    "know",
+    30798.90256366494
+   ],
+   [
+    "includ",
+    29699.580352678182
+   ],
+   [
+    "fetch",
+    29476.708809358377
+   ],
+   [
+    "api",
+    29061.208679304487
+   ],
+   [
+    "product",
+    28486.844759852196
+   ],
+   [
+    "could",
+    28107.244654430637
+   ],
+   [
+    "nam",
+    26918.73302368435
+   ],
+   [
+    "numb",
+    26802.887318906334
+   ],
+   [
+    "articl",
+    26802.355222166985
+   ],
+   [
+    "plann",
+    26724.790177700197
+   ],
+   [
+    "data",
+    26577.41466497701
+   ],
+   [
+    "specif",
+    25584.18947415738
+   ],
+   [
+    "using",
+    25410.574331241238
+   ],
+   [
+    "pric",
+    25307.052135651695
+   ],
+   [
+    "avail",
+    25227.962724755474
+   ],
+   [
+    "compan",
+    24927.40009929527
+   ],
+   [
+    "match",
+    24856.738624016907
+   ],
+   [
+    "provid",
+    24705.72596191818
+   ],
+   [
+    "video",
+    24125.874855145597
+   ]
+  ],
+  "top30_api_doc_terms": [
+   [
+    "search",
+    6025.0840224761605
+   ],
+   [
+    "valu",
+    5613.626813171488
+   ],
+   [
+    "get",
+    5370.248083374658
+   ],
+   [
+    "return",
+    5222.934407983637
+   ],
+   [
+    "list",
+    5111.4338327224195
+   ],
+   [
+    "parameter",
+    5037.2673619646375
+   ],
+   [
+    "pag",
+    4718.462072238865
+   ],
+   [
+    "result",
+    4555.73999263067
+   ],
+   [
+    "api",
+    4518.3906775626865
+   ],
+   [
+    "nam",
+    4322.907325139982
+   ],
+   [
+    "default",
+    4312.1150438260765
+   ],
+   [
+    "cod",
+    4179.912059467728
+   ],
+   [
+    "endpoint",
+    4060.2580720447168
+   ],
+   [
+    "btc",
+    4003.9925980821718
+   ],
+   [
+    "numb",
+    3939.3101787606447
+   ],
+   [
+    "user",
+    3690.0266413558616
+   ],
+   [
+    "filter",
+    3638.4907349694836
+   ],
+   [
+    "countr",
+    3620.0390178832595
+   ],
+   [
+    "dat",
+    3546.6614219232933
+   ],
+   [
+    "data",
+    3452.1194285995057
+   ],
+   [
+    "loca",
+    3364.688453924847
+   ],
+   [
+    "languag",
+    3274.554187516252
+   ],
+   [
+    "typ",
+    3225.9018386678817
+   ],
+   [
+    "http",
+    3143.6728521571113
+   ],
+   [
+    "use",
+    3078.0806343156305
+   ],
+   [
+    "url",
+    3040.1724676506014
+   ],
+   [
+    "request",
+    3039.629141933672
+   ],
+   [
+    "quer",
+    3019.628916919946
+   ],
+   [
+    "retriev",
+    2936.673802626906
+   ],
+   [
+    "tim",
+    2874.5965422434087
+   ]
+  ],
+  "stemmer_collisions": {
+   "surface_forms": 30754,
+   "stems": 17421,
+   "stems_merging_2plus": 9813,
+   "worst": [
+    [
+     "gener",
+     [
+      "gener",
+      "general",
+      "generalization",
+      "generalize",
+      "generally",
+      "generate",
+      "generation",
+      "generations",
+      "generator",
+      "generic"
+     ]
+    ],
+    [
+     "stat",
+     [
+      "stat",
+      "state",
+      "stated",
+      "statement",
+      "statements",
+      "states",
+      "static",
+      "statics",
+      "stating",
+      "stats"
+     ]
+    ],
+    [
+     "serv",
+     [
+      "serv",
+      "serve",
+      "served",
+      "server",
+      "servere",
+      "serverless",
+      "servers",
+      "serves",
+      "serving",
+      "servings"
+     ]
+    ],
+    [
+     "pag",
+     [
+      "pag",
+      "page",
+      "pageable",
+      "pageant",
+      "paged",
+      "pager",
+      "pages",
+      "pagesize",
+      "paging"
+     ]
+    ],
+    [
+     "loc",
+     [
+      "loc",
+      "local",
+      "locale",
+      "locales",
+      "locality",
+      "localize",
+      "locally",
+      "locals",
+      "locate"
+     ]
+    ],
+    [
+     "produc",
+     [
+      "produc",
+      "produce",
+      "produced",
+      "producer",
+      "producers",
+      "produces",
+      "producing",
+      "production",
+      "productions"
+     ]
+    ],
+    [
+     "min",
+     [
+      "min",
+      "mine",
+      "mineable",
+      "mined",
+      "miner",
+      "minify",
+      "mining",
+      "minor",
+      "minority"
+     ]
+    ],
+    [
+     "call",
+     [
+      "call",
+      "calle",
+      "called",
+      "caller",
+      "callers",
+      "calles",
+      "calling",
+      "calls"
+     ]
+    ],
+    [
+     "explor",
+     [
+      "explor",
+      "exploration",
+      "explorations",
+      "explore",
+      "explored",
+      "explorer",
+      "explorers",
+      "exploring"
+     ]
+    ],
+    [
+     "relat",
+     [
+      "relat",
+      "relatable",
+      "related",
+      "relatedness",
+      "relates",
+      "relating",
+      "relative",
+      "relatively"
+     ]
+    ]
+   ]
+  },
+  "verdict": "Adequate at EZR's default top=100: only 0.0% of queries have zero features."
+ },
+ "figures": [
+  "diagnostics/figures/d1_support_category.png",
+  "diagnostics/figures/d1_support_tool.png",
+  "diagnostics/figures/d1_support_api.png",
+  "diagnostics/figures/d2_overlap_distribution.png",
+  "diagnostics/figures/d2_rank_cdf.png",
+  "diagnostics/figures/d3_nonzero_features.png",
+  "diagnostics/figures/d3_query_length.png"
+ ]
+}

@@ -1,0 +1,402 @@
+{
+ "provenance": {
+  "training_data": "ToolGen repackaging of ToolBench retrieval split, HF reasonwang/ToolGen-Datasets data.tar.gz blob f80aa7422a39bc69b1d7c963f064fff8d94988f9dd153b12790087749cc2e7e0",
+  "evaluation_set": "StableToolBench solvable_queries @ aa4ed9f4737ad98bd706663f01d63623c3427812",
+  "instance_count_discrepancy": "closed as unresolved -- the original ToolBench instruction files are not available"
+ },
+ "followup_a_hard_negatives": {
+  "n_queries": 88995,
+  "n_apis": 10355,
+  "ranker": "length-normalised Jaccard, unchanged from round one",
+  "excluded": {
+   "P0": 0,
+   "P1": 0,
+   "P2": 4552,
+   "P3": 0
+  },
+  "pools": {
+   "P0": {
+    "instances": 88995,
+    "pool_size": {
+     "min": 10355.0,
+     "median": 10355.0,
+     "max": 10355.0,
+     "mean": 10355.0
+    },
+    "median_rank_expected": 4.0,
+    "median_rank_optimistic": 3.0,
+    "top1": 0.3048598235855947,
+    "top5": 0.5370975897522333,
+    "top10": 0.6160570818585314,
+    "top1_optimistic": 0.37189729760098883,
+    "top5_optimistic": 0.5636384066520591,
+    "top10_optimistic": 0.6342154053598517,
+    "normalised_rank_median": 0.00038628681796233703,
+    "normalised_rank_mean": 0.021263063921933778,
+    "chance_top1": 0.00021492752008456237,
+    "chance_top5": 0.0010743364413164085,
+    "lift_top1": 1418.4308434101358,
+    "lift_top5": 499.9342562504122
+   },
+   "P1": {
+    "instances": 88995,
+    "pool_size": {
+     "min": 6.0,
+     "median": 398.0,
+     "max": 2031.0,
+     "mean": 546.5390639923592
+    },
+    "median_rank_expected": 1.5,
+    "median_rank_optimistic": 1.0,
+    "top1": 0.43997977414461487,
+    "top5": 0.7357267262205742,
+    "top10": 0.8186190235406483,
+    "top1_optimistic": 0.5325804820495533,
+    "top5_optimistic": 0.759402213607506,
+    "top10_optimistic": 0.82942861958537,
+    "normalised_rank_median": 0.006622516556291391,
+    "normalised_rank_mean": 0.03874417371238654,
+    "chance_top1": 0.01078618487586614,
+    "chance_top5": 0.05084470357205691,
+    "lift_top1": 40.7910469928121,
+    "lift_top5": 14.470076026265062
+   },
+   "P2": {
+    "instances": 84443,
+    "pool_size": {
+     "min": 2.0,
+     "median": 4.0,
+     "max": 20.0,
+     "mean": 5.147176201698187
+    },
+    "median_rank_expected": 1.0,
+    "median_rank_optimistic": 1.0,
+    "top1": 0.7438627239676469,
+    "top5": 0.9954051845623675,
+    "top10": 0.9999763153843421,
+    "top1_optimistic": 0.889096787181886,
+    "top5_optimistic": 0.9978210153594732,
+    "top10_optimistic": 0.9999763153843421,
+    "normalised_rank_median": 0.3333333333333333,
+    "normalised_rank_mean": 0.33145627157771446,
+    "chance_top1": 0.6065904557765932,
+    "chance_top5": 0.9598107061252873,
+    "lift_top1": 1.2263013980582822,
+    "lift_top5": 1.0370848941462358
+   },
+   "P3": {
+    "instances": 88995,
+    "pool_size": {
+     "min": 6.0,
+     "median": 398.0,
+     "max": 2031.0,
+     "mean": 546.5390639923592
+    },
+    "median_rank_expected": 1.0,
+    "median_rank_optimistic": 1.0,
+    "top1": 0.5912916455980674,
+    "top5": 0.8446317208831957,
+    "top10": 0.8948255519973032,
+    "top1_optimistic": 0.6780605652002921,
+    "top5_optimistic": 0.8547446485757627,
+    "top10_optimistic": 0.9011966964436204,
+    "normalised_rank_median": 0.004596527068437181,
+    "normalised_rank_mean": 0.026257736241010087,
+    "chance_top1": 0.01078618487586614,
+    "chance_top5": 0.05084470357205691,
+    "lift_top1": 54.819350159765,
+    "lift_top5": 16.611990267308514
+   }
+  },
+  "overlap": {
+   "ground_truth": {
+    "n": 88995,
+    "mean": 0.16338617864166224,
+    "median": 0.1538461595773697
+   },
+   "random_any_category": {
+    "n": 88995,
+    "mean": 0.01320519863896707,
+    "median": 0.011367450468242168
+   },
+   "random_same_category": {
+    "n": 88995,
+    "mean": 0.022218821043925144,
+    "median": 0.01888173073530197
+   },
+   "same_tool_non_relevant": {
+    "n": 57044,
+    "mean": 0.07856484042776683,
+    "median": 0.06896551698446274
+   }
+  },
+  "overlap_ratios": {
+   "vs_random_any_category": 12.372867921844646,
+   "vs_random_same_category": 7.353503514820095,
+   "vs_same_tool": 2.079634830950632
+  },
+  "verdict": "DOWNGRADE round one: at equal pool size, same-category negatives drop top-5 to 73.6%, below the size-matched control's 84.5% (-10.9%). The 53.7% figure measured pool size and cross-domain topicality, not copied wording."
+ },
+ "followup_b_test_support": {
+  "train_instances": 88395,
+  "train_tools": 3225,
+  "train_categories": 49,
+  "splits": {
+   "test_G1_instruction": {
+    "tool": {
+     "instances": 200,
+     "min": 2,
+     "p25": 43.0,
+     "median": 56.0,
+     "p75": 66.0,
+     "max": 392,
+     "frac_zero": 0.0,
+     "frac_le_3": 0.035,
+     "frac_le_5": 0.04,
+     "frac_le_10": 0.05
+    },
+    "category": {
+     "instances": 200,
+     "min": 229,
+     "p25": 1750.0,
+     "median": 3369.0,
+     "p75": 6817.0,
+     "max": 12456,
+     "frac_zero": 0.0,
+     "frac_le_3": 0.0,
+     "frac_le_5": 0.0,
+     "frac_le_10": 0.0
+    },
+    "distinct_tools": 184,
+    "tools_unseen_in_train": 0
+   },
+   "test_G1_tool": {
+    "tool": {
+     "instances": 200,
+     "min": 2,
+     "p25": 42.0,
+     "median": 57.0,
+     "p75": 68.25,
+     "max": 141,
+     "frac_zero": 0.0,
+     "frac_le_3": 0.07,
+     "frac_le_5": 0.075,
+     "frac_le_10": 0.075
+    },
+    "category": {
+     "instances": 200,
+     "min": 133,
+     "p25": 1655.0,
+     "median": 3758.0,
+     "p75": 7561.0,
+     "max": 12456,
+     "frac_zero": 0.0,
+     "frac_le_3": 0.0,
+     "frac_le_5": 0.0,
+     "frac_le_10": 0.0
+    },
+    "distinct_tools": 114,
+    "tools_unseen_in_train": 0
+   },
+   "test_G1_category": {
+    "tool": {
+     "instances": 200,
+     "min": 1,
+     "p25": 38.0,
+     "median": 49.0,
+     "p75": 67.0,
+     "max": 92,
+     "frac_zero": 0.0,
+     "frac_le_3": 0.08,
+     "frac_le_5": 0.08,
+     "frac_le_10": 0.08
+    },
+    "category": {
+     "instances": 200,
+     "min": 115,
+     "p25": 1114.0,
+     "median": 3851.0,
+     "p75": 3851.0,
+     "max": 3851,
+     "frac_zero": 0.0,
+     "frac_le_3": 0.0,
+     "frac_le_5": 0.0,
+     "frac_le_10": 0.0
+    },
+    "distinct_tools": 103,
+    "tools_unseen_in_train": 0
+   }
+  },
+  "stabletoolbench": {
+   "files": {
+    "G1_instruction": {
+     "records": 163,
+     "tool": {
+      "instances": 163,
+      "min": 2,
+      "p25": 43.0,
+      "median": 56.0,
+      "p75": 65.5,
+      "max": 392,
+      "frac_zero": 0.0,
+      "frac_le_3": 0.03680981595092025,
+      "frac_le_5": 0.03680981595092025,
+      "frac_le_10": 0.049079754601226995
+     },
+     "category": {
+      "instances": 163,
+      "min": 229,
+      "p25": 1716.0,
+      "median": 3758.0,
+      "p75": 6817.0,
+      "max": 12456,
+      "frac_zero": 0.0,
+      "frac_le_3": 0.0,
+      "frac_le_5": 0.0,
+      "frac_le_10": 0.0
+     },
+     "matched_by_query_id": 163,
+     "matched_by_query_text": 0,
+     "unmatched": 0,
+     "match_rate": 1.0,
+     "also_in_toolgen_train_by_id": 0,
+     "also_in_toolgen_train_by_text": 0
+    },
+    "G1_tool": {
+     "records": 158,
+     "tool": {
+      "instances": 158,
+      "min": 2,
+      "p25": 44.25,
+      "median": 58.0,
+      "p75": 68.0,
+      "max": 141,
+      "frac_zero": 0.0,
+      "frac_le_3": 0.056962025316455694,
+      "frac_le_5": 0.056962025316455694,
+      "frac_le_10": 0.056962025316455694
+     },
+     "category": {
+      "instances": 158,
+      "min": 360,
+      "p25": 1750.0,
+      "median": 4332.0,
+      "p75": 7561.0,
+      "max": 12456,
+      "frac_zero": 0.0,
+      "frac_le_3": 0.0,
+      "frac_le_5": 0.0,
+      "frac_le_10": 0.0
+     },
+     "matched_by_query_id": 158,
+     "matched_by_query_text": 0,
+     "unmatched": 0,
+     "match_rate": 1.0,
+     "also_in_toolgen_train_by_id": 0,
+     "also_in_toolgen_train_by_text": 0
+    },
+    "G1_category": {
+     "records": 153,
+     "tool": {
+      "instances": 153,
+      "min": 1,
+      "p25": 38.0,
+      "median": 49.0,
+      "p75": 68.0,
+      "max": 92,
+      "frac_zero": 0.0,
+      "frac_le_3": 0.0718954248366013,
+      "frac_le_5": 0.0718954248366013,
+      "frac_le_10": 0.0718954248366013
+     },
+     "category": {
+      "instances": 153,
+      "min": 115,
+      "p25": 1114.0,
+      "median": 3851.0,
+      "p75": 3851.0,
+      "max": 3851,
+      "frac_zero": 0.0,
+      "frac_le_3": 0.0,
+      "frac_le_5": 0.0,
+      "frac_le_10": 0.0
+     },
+     "matched_by_query_id": 153,
+     "matched_by_query_text": 0,
+     "unmatched": 0,
+     "match_rate": 1.0,
+     "also_in_toolgen_train_by_id": 0,
+     "also_in_toolgen_train_by_text": 0
+    }
+   },
+   "pooled_G1": {
+    "instances": 474,
+    "min": 1,
+    "p25": 41.0,
+    "median": 56.0,
+    "p75": 67.0,
+    "max": 392,
+    "frac_zero": 0.0,
+    "frac_le_3": 0.05485232067510549,
+    "frac_le_5": 0.05485232067510549,
+    "frac_le_10": 0.05907172995780591
+   }
+  },
+  "near_duplicates": {
+   "test_G1_instruction": {
+    "instances": 200,
+    "exact_text_duplicates_in_train": 3,
+    "max_jaccard_to_any_training_query": {
+     "median": 0.5577777624130249,
+     "p75": 0.699999988079071,
+     "p95": 0.875249981880188,
+     "max": 1.0
+    },
+    "frac_above_0.5": 0.65,
+    "frac_above_0.7": 0.255
+   },
+   "test_G1_tool": {
+    "instances": 200,
+    "exact_text_duplicates_in_train": 1,
+    "max_jaccard_to_any_training_query": {
+     "median": 0.5508620738983154,
+     "p75": 0.6666666865348816,
+     "p95": 0.8666666746139526,
+     "max": 1.0
+    },
+    "frac_above_0.5": 0.685,
+    "frac_above_0.7": 0.205
+   },
+   "test_G1_category": {
+    "instances": 200,
+    "exact_text_duplicates_in_train": 7,
+    "max_jaccard_to_any_training_query": {
+     "median": 0.6000000238418579,
+     "p75": 0.7347826361656189,
+     "p95": 1.0,
+     "max": 1.0
+    },
+    "frac_above_0.5": 0.73,
+    "frac_above_0.7": 0.28
+   },
+   "stabletoolbench_solvable_G1": {
+    "instances": 474,
+    "exact_text_duplicates_in_train": 10,
+    "max_jaccard_to_any_training_query": {
+     "median": 0.5833333134651184,
+     "p75": 0.7142857313156128,
+     "p95": 0.9047619104385376,
+     "max": 1.0
+    },
+    "frac_above_0.5": 0.7447257383966245,
+    "frac_above_0.7": 0.2742616033755274
+   }
+  }
+ },
+ "figures": [
+  "diagnostics/figures/d4_pool_ranks.png",
+  "diagnostics/figures/d4_overlap_tiers.png",
+  "diagnostics/figures/d5_support_overlay.png",
+  "diagnostics/figures/d5_near_duplicates.png"
+ ]
+}
