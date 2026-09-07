@@ -1,0 +1,93 @@
+# Why does our BM25 beat theirs on their own data?
+#
+# A ladder from their configuration to ours, changing ONE thing per rung, so
+# each factor's contribution is measured rather than asserted. Multi-domain
+# only (the 49,936-doc pooled corpus); all rungs share data, queries and
+# metric, so every difference is the retriever.
+#
+# S0 is their actual stack. S1 swaps only the library (rank_bm25 -> bm25s) with
+# tokenisation kept as close as the regex allows, isolating library effects
+# from configuration effects.
+
+run_name: toolbench_ablation
+
+data_root: /mnt/beegfs/lli66/ez-tool/data/raw/toolgen_data/data/retrieval
+
+settings:
+  - multi_domain
+
+retrievers:
+  # ---- their stack ----
+  - name: S0_their_stack # rank_bm25 + nltk, no stemmer, no stopwords
+    type: bm25_okapi
+    k1: 1.5
+    b: 0.75
+    epsilon: 0.25
+
+  # ---- library swap, tokenisation held as close as possible ----
+  - name: S1_bm25s_nltk_like
+    type: bm25
+    method: robertson # closest bm25s variant to BM25Okapi's IDF
+    k1: 1.5
+    b: 0.75
+    stemmer: false
+    stopwords: null
+    token_pattern: '(?u)[\w\-/]+' # keeps climate-news and v1/quote joined
+
+  # ---- + default token pattern: splits on - and / , drops 1-char tokens ----
+  - name: S2_default_token_pattern
+    type: bm25
+    method: robertson
+    k1: 1.5
+    b: 0.75
+    stemmer: false
+    stopwords: null
+
+  # ---- + stopword removal ----
+  - name: S3_plus_stopwords
+    type: bm25
+    method: robertson
+    k1: 1.5
+    b: 0.75
+    stemmer: false
+    stopwords: en
+
+  # ---- + Snowball stemming ----
+  - name: S4_plus_stemming
+    type: bm25
+    method: robertson
+    k1: 1.5
+    b: 0.75
+    stemmer: true
+    stopwords: en
+
+  # ---- + lucene scoring variant (this is our headline config) ----
+  - name: S5_plus_lucene
+    type: bm25
+    method: lucene
+    k1: 1.5
+    b: 0.75
+    stemmer: true
+    stopwords: en
+
+  # ---- + our normalize(): camelCase / underscore splitting ----
+  # NOT used in the replication run; included to size what it would add.
+  - name: S6_plus_normalize
+    type: bm25
+    method: lucene
+    k1: 1.5
+    b: 0.75
+    stemmer: true
+    stopwords: en
+    normalize_text: true
+
+top_k: 100
+ks: [1, 3, 5]
+
+splits:
+  - [G1, instruction]
+  - [G1, tool]
+  - [G1, category]
+  - [G2, instruction]
+  - [G2, category]
+  - [G3, instruction]

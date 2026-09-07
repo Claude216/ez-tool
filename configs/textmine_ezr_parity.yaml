@@ -1,0 +1,34 @@
+# Parity run: the port restricted to exactly what vendored ezr can express.
+#
+# scripts/textmine_ezr_native.py drives `tmActive` @ 500d1d4 directly. This
+# config points the port at the same setup so the two trajectories can be
+# compared end to end, beyond the component-level checks in validate.py.
+#
+# The restrictions are ezr's, not ours:
+#   - abstract only          (`tmPrepare` hardcodes `tmTokenize(f)`)
+#   - klass column `label`   (same call; Kitchenham is 45 positive, not 132)
+#   - warm start 20 + 20     (`_tm_warm` always seeds from known positives)
+# False alarm and found recall are still recorded here; ezr computes neither,
+# so those columns simply have no counterpart to compare against.
+
+run_name: textmine_ezr_parity
+
+# Flat 290 on every corpus: the native ezr driver takes a single budget, and
+# parity requires both sides run the identical setup.
+budget: 290
+
+repeats: 20
+seed: 1
+top_features: 100
+alpha: 1.0
+
+# Read Kitchenham through `label` (45) as ezr does, not `abs` (132).
+klass_override: label
+
+corpora: [Hall, Wahono, Radjenovic, Kitchenham]
+norms: [false, true]
+
+arms:
+  - name: code
+    include_title: false
+    warm: { mode: oracle, yes_: 20, no_: 20 }

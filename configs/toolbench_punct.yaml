@@ -1,0 +1,30 @@
+# Is JSON punctuation the mechanism behind the 13-point tokenizer effect?
+#
+# Same library, same b=0.75, same data, same metric. The ONLY change is
+# whether nltk's punctuation-only tokens survive.
+#
+# Already measured on identical settings, for comparison:
+#   nltk            26.22 I1 NDCG@5   (174.4 tokens/doc)
+#   regex [\w\-/]+  39.06 I1 NDCG@5   ( 71.2 tokens/doc)
+#
+# If nltk-minus-punctuation lands near 39, punctuation is the whole story.
+# If it stays near 26, the cause is something else in nltk's tokenisation.
+run_name: toolbench_punct
+data_root: /mnt/beegfs/lli66/ez-tool/data/raw/toolgen_data/data/retrieval
+settings: [multi_domain]
+retrievers:
+  - name: P_nltk_minus_punctuation
+    type: bm25_okapi
+    k1: 1.5
+    b: 0.75
+    epsilon: 0.25
+    tokenizer: nltk_nopunct
+top_k: 100
+ks: [1, 3, 5]
+splits:
+  - [G1, instruction]
+  - [G1, tool]
+  - [G1, category]
+  - [G2, instruction]
+  - [G2, category]
+  - [G3, instruction]

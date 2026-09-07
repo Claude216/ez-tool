@@ -1,0 +1,56 @@
+# Section 7 of "Can AI be Easy?" (arXiv 2606.03640), replicated.
+#
+# Complementary Naive Bayes as an active learner for SLR relevance filtering,
+# on the four corpora of Yu et al. (arXiv 1612.03224).
+
+run_name: textmine_paper
+
+# Figure 4's panels do not share an x-axis; each corpus runs to its own upper
+# bound, read off the published figure. Section 7.4 states a labelling budget
+# of 50, which these caps run well past so the plateau is visible.
+budget:
+  Hall: 290
+  Wahono: 515
+  Radjenovic: 630
+  Kitchenham: 510
+
+repeats: 20 # ezr's --textmine.valid=20
+seed: 1
+top_features: 100 # ezr's --textmine.top=100
+alpha: 1.0
+
+corpora: [Hall, Wahono, Radjenovic, Kitchenham]
+
+# Rennie et al.'s recommendation to divide a class's weights by their absolute
+# sum. ezr defaults it off (--textmine.norm=0); figure 4 plots both, red for
+# on and blue for off, and section 7.4 reads the difference as a warning
+# against applying that preprocessing step uncritically.
+norms: [false, true]
+
+# Section 7.4 says "a warm start of N = 24 randomly drawn papers", while the
+# code draws 20 known-positive plus 20 random (`_tm_warm`, --textmine.yes=20
+# --textmine.no=20). The two are not reconcilable, so both are run.
+#
+# A uniform draw of 24 from Hall (104 relevant in 8911) contains no relevant
+# paper about three quarters of the time; `active.run_trial` then falls back
+# to uniform sampling until the first positive appears, which is FASTREAD's
+# own step 1, and charges it to the budget.
+#
+# `n_yes`/`n_no` rather than `yes`/`no` because YAML 1.1 parses those as
+# booleans.
+arms:
+  - name: paper # section 7.4 as written
+    include_title: true
+    warm: { mode: random, n: 24 }
+  - name: stratified # 24 total, split evenly: Yu's "equal number" of negatives
+    include_title: true
+    warm: { mode: oracle, yes_: 12, no_: 12 }
+  - name: code # ezr's own defaults, 40 labels of warm start
+    include_title: true
+    warm: { mode: oracle, yes_: 20, no_: 20 }
+  - name: paper_abstract_only # ablation: ezr tokenizes `abstract` alone
+    include_title: false
+    warm: { mode: random, n: 24 }
+  - name: code_abstract_only # the same ablation off a warm start that works,
+    include_title: false #     so the title effect is not confounded with the
+    warm: { mode: oracle, yes_: 20, no_: 20 } # random arm's cold start

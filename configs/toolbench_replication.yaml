@@ -1,0 +1,49 @@
+# Replication of the BM25 row of ToolGen Table 1 (arXiv 2410.03439).
+#
+# Runs on ToolBench's retrieval split -- NOT StableToolBench's solvable
+# queries. Everything here is pinned to what their code actually does
+# (evaluation/retrieval/eval_bm25.py, evaluation/utils/retrieval.py):
+#
+#   documents  category_name, tool_name, api_name, api_description,
+#              required_params/optional_params/return_schema as raw json.dumps
+#   retriever  rank_bm25.BM25Okapi over nltk.word_tokenize(lower()),
+#              no stemming, no stopword removal
+#   metric     NDCG@1/3/5 with IDCG taken over the relevant docs actually
+#              retrieved (ndcg_toolgen), which is how their compute_ndcg builds
+#              `true_relevance`
+#   top_n      100
+
+run_name: toolbench_replication
+
+data_root: /mnt/beegfs/lli66/ez-tool/data/raw/toolgen_data/data/retrieval
+
+# in_domain ranks within one stage's corpus; multi_domain ranks over the
+# pooled 49,936-doc corpus. ToolGen reports both.
+settings:
+  - multi_domain
+  - in_domain
+
+retrievers:
+  - name: bm25_okapi_toolgen # their stack, for faithful replication
+    type: bm25_okapi
+    k1: 1.5
+    b: 0.75
+    epsilon: 0.25
+  - name: bm25s_ours # our stack on their data, to isolate the retriever
+    type: bm25
+    method: lucene
+    k1: 1.5
+    b: 0.75
+    stemmer: true
+    stopwords: en
+
+top_k: 100
+ks: [1, 3, 5, 10, 20, 50, 100]
+
+splits:
+  - [G1, instruction]
+  - [G1, tool]
+  - [G1, category]
+  - [G2, instruction]
+  - [G2, category]
+  - [G3, instruction]

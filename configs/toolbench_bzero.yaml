@@ -1,0 +1,34 @@
+# Does document-length normalisation explain the tokenizer effect?
+#
+# b=0 removes length normalisation from BM25 entirely. nltk emits 174.4
+# tokens/doc against the regex tokenizer's 71.2, because these documents are
+# json.dumps output and every comma and brace becomes a token. If that length
+# inflation is the mechanism, the ~13-point nltk-vs-regex gap should collapse
+# at b=0. If it persists, the cause is something else.
+#
+# At b=0.75: nltk 26.22 vs regex 39.06 (I1 NDCG@5)
+run_name: toolbench_bzero
+data_root: /mnt/beegfs/lli66/ez-tool/data/raw/toolgen_data/data/retrieval
+settings: [multi_domain]
+retrievers:
+  - name: B0_nltk_tokens_b0
+    type: bm25_okapi
+    k1: 1.5
+    b: 0.0
+    epsilon: 0.25
+    tokenizer: nltk
+  - name: B0_regex_tokens_b0
+    type: bm25_okapi
+    k1: 1.5
+    b: 0.0
+    epsilon: 0.25
+    tokenizer: regex
+top_k: 100
+ks: [1, 3, 5]
+splits:
+  - [G1, instruction]
+  - [G1, tool]
+  - [G1, category]
+  - [G2, instruction]
+  - [G2, category]
+  - [G3, instruction]

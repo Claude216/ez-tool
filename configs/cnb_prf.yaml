@@ -1,0 +1,36 @@
+# CNB re-ranking on pseudo-relevance feedback, StableToolBench.
+#
+# Zero-shot: no qrels are read at query time. BM25's top `n_pos` are presumed
+# relevant and `n_neg` random APIs presumed irrelevant (Yu et al.'s
+# presumptive sampling), CNB trains on that, and the shortlist is re-ranked.
+# Document text is the `with_parameters` variant, so any difference against
+# the BM25 baseline is the method and not the text.
+
+run_name: cnb_prf
+
+retriever:
+  type: cnb_prf
+  pool: 100
+  n_pos: 5
+  n_neg: 200
+  top_features: 5000
+  norm: false
+  fusion: rrf
+  seed: 1
+
+variants:
+  - name: with_parameters
+    backfill_description: false
+    include_parameters: true
+
+label_policy: drop_dead
+top_k: 100
+ks: [1, 3, 5, 10, 20, 50, 100]
+
+groups:
+  - G1_instruction
+  - G1_tool
+  - G1_category
+  - G2_instruction
+  - G2_category
+  - G3_instruction

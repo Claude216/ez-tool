@@ -1,0 +1,65 @@
+# BM25 baseline: full-corpus retrieval over all StableToolBench APIs.
+#
+# Retrieval unit is one API, indexed on tool_name + api_name + description.
+# Parameter schemas are excluded on purpose (progressive disclosure).
+
+run_name: bm25_baseline
+
+retriever:
+  type: bm25
+  method: lucene # bm25s scoring variant: lucene | robertson | atire | bm25l | bm25+
+  k1: 1.5
+  b: 0.75
+  stemmer: true
+  stopwords: en
+
+# Two orthogonal ablations over what a document contains.
+#
+# backfill_description: 9.5% of APIs have a blank description. The parent
+#   tool's description is often uninformative ("API for TheClique company"),
+#   so backfilling is measured, not assumed.
+#
+# include_parameters: argument names and their descriptions. Anthropic's tool
+#   search indexes "tool names, descriptions, argument names, and argument
+#   descriptions", so `with_parameters` is the variant that mirrors a real
+#   deployed retriever; `strict` indexes only what the model is shown up front.
+#   Parameter defaults are never indexed -- they hold base64 payloads.
+#
+# toolgen_style: ToolGen's document format verbatim, raw JSON schema dumps
+#   included. Diagnostic only -- it isolates "different document text" from
+#   "different query set" when comparing to their published BM25 row.
+#
+# backfill_with_parameters was dropped: it scored no better than
+# with_parameters alone, because argument text already supplies the signal
+# backfilling a blank description was contributing.
+variants:
+  - name: with_parameters # headline baseline
+    backfill_description: false
+    include_parameters: true
+  - name: strict # harder ablation: only what the model is shown up front
+    backfill_description: false
+    include_parameters: false
+  - name: backfill
+    backfill_description: true
+    include_parameters: false
+  - name: toolgen_style # diagnostic: reproduces ToolGen's eval_bm25.py text
+    toolgen_style: true
+
+# 24.3% of `relevant APIs` labels point at endpoints that existed in the 2023
+# ToolBench environment but were dropped from the 2024 filtered corpus, so no
+# retriever can reach them.
+#   drop_dead : discard unreachable labels and the 126 queries left with none
+#               -> 639 queries, honest recall ceiling of 1.0   [default]
+#   keep_all  : retain all 765 queries, recall capped at 0.757
+label_policy: drop_dead
+
+top_k: 100
+ks: [1, 3, 5, 10, 20, 50, 100]
+
+groups:
+  - G1_instruction
+  - G1_tool
+  - G1_category
+  - G2_instruction
+  - G2_category
+  - G3_instruction
