@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# machine-specific symlink to beegfs, and local job logs
+/data
+/logs/
